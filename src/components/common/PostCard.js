@@ -7,7 +7,13 @@ import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 const PostCard = ({ post }) => {
     const url = `/${post.slug}/`
     const readingTime = readingTimeHelper(post)
-
+    const assetServer = "https://laughing-saha-012f4d.netlify.app";
+    const localServer = "http://localhost:2368";
+    if(process.env.NODE_ENV === `production`)
+    {
+       post.primary_author.profile_image = post.primary_author.profile_image.replace(localServer, assetServer);
+       post.feature_image = post.feature_image.replace(localServer, assetServer);
+    }
     return (
         <Link to={url} className="post-card">
             <header className="post-card-header">
