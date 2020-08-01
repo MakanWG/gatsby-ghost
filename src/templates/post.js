@@ -19,8 +19,7 @@ const Post = ({ data, location }) => {
     if(process.env.NODE_ENV === `production`)
     {
        post.feature_image = post.feature_image.replace(localServer, assetServer);
-       post.html = post.html.replaceAll(localServer, assetServer);
-       console.log(post.html)
+       post.html = post.html.replace(/http:\/\/localhost:2368/g, assetServer);
     }
     return (
         <>
