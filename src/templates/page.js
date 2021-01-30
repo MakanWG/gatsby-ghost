@@ -18,8 +18,8 @@ const Page = ({ data, location }) => {
     const localServer = "http://localhost:2368";
     if(process.env.NODE_ENV === `production`)
     {
-       //page.feature_image = post.feature_image.replace(localServer, assetServer);
-       page.html = page.html.replace(/http:\/\/localhost:2368/g, assetServer);
+        page.html = page.html.replace(/href="http:\/\/localhost:2368/g, 'href="');
+        page.html = page.html.replace(/http:\/\/localhost:2368/g, assetServer);
     }
     return (
         <>
