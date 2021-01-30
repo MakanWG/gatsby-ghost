@@ -14,7 +14,13 @@ import { MetaData } from '../components/common/meta'
 */
 const Page = ({ data, location }) => {
     const page = data.ghostPage
-
+    const assetServer = "https://laughing-saha-012f4d.netlify.app";
+    const localServer = "http://localhost:2368";
+    if(process.env.NODE_ENV === `production`)
+    {
+       //page.feature_image = post.feature_image.replace(localServer, assetServer);
+       page.html = post.html.replace(/http:\/\/localhost:2368/g, assetServer);
+    }
     return (
         <>
             <MetaData
